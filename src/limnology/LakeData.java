@@ -42,9 +42,17 @@ import utils.RainbowColorScheme;
 
 public class LakeData
 {
-    private static final String CSV_NAME = "C:/Scratch/Limnology/Sorted-Trout Lake-2010-Daily.csv";
+    // private static final String CSV_NAME =
+    // "C:/Scratch/Limnology/Sorted-Trout Lake-2010-Daily.csv";
+    // private static final String CSV_NAME =
+    // "C:/Scratch/Limnology/Sorted-Trout Lake-2009-Daily.csv";
+//    private static final String CSV_NAME = "C:/Scratch/Limnology/north_temperate_lakes_lter__daily_water_temperature_-_crystal_bog(2012).csv";
+    private static final String CSV_NAME = "C:/Scratch/Limnology/north_temperate_lakes_lter__daily_water_temperature_-_trout_lake(2011).csv";
+    // private static final String CSV_NAME =
+    // "C:/Scratch/Limnology/Sorted-Crystal Lake Bog-2012-Daily.csv";
     private String csvName = CSV_NAME;
-    private static final String LAKE_NAME = "Trout Lake";
+     private static final String LAKE_NAME = "Trout Lake";
+//    private static final String LAKE_NAME = "Crystal Lake Bog";
     private String lakeName = LAKE_NAME;
     private FormatType formatType = FormatType.MONTHDAY;
 
@@ -64,7 +72,7 @@ public class LakeData
     private METHOD method = METHOD.DAYNUM;
 
     // These are used with METHOD.DATASELECT
-    private static final int YEAR = 2010;
+    private static final int YEAR = 2011;
     private static final int DAY_INCR = 5;
     private int year = YEAR;
     private int dayIncr = DAY_INCR;
@@ -117,14 +125,21 @@ public class LakeData
         int hourIndex = -1;
         String tempStr = null;
         String hourStr = null;
+        String delimiter = ",";
         LakeDataPoint prevPoint = new LakeDataPoint("", "-1", "-1", "-1");
         try {
             in = new BufferedReader(new FileReader(name));
             String line;
             int lineNum = 0;
             while((line = in.readLine()) != null) {
+                // Determine the separator
+                if(lineNum == 0) {
+                    if(line.contains("\t")) {
+                        delimiter = "\t";
+                    }
+                }
                 lineNum++;
-                tokens = line.split("\t");
+                tokens = line.split(delimiter);
                 tokensLen = tokens.length;
                 if(lineNum == 1) {
                     // Find the indices
@@ -639,7 +654,10 @@ public class LakeData
      */
     public void plot(JFreeChart chart) {
         try {
-            ChartFrame frame = new ChartFrame(chart.getTitle().getText(), chart);
+            // ChartFrame frame = new ChartFrame(chart.getTitle().getText(),
+            // chart);
+            File file = new File(csvName);
+            ChartFrame frame = new ChartFrame(file.getName(), chart);
             // Note that there is a context menu. Drag rubber band zooms. Double
             // click un-zooms. They just don't work well. You may have to click
             // several times. Clicking outside plot area may be more effective.

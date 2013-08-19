@@ -76,6 +76,10 @@ public class LakeDataPoint implements Comparable<LakeDataPoint>
         String tempStr, String hourStr) {
         // Remove any embedded quotes
         date = dateString.replaceAll("\"", "");
+        // If the hh:mm:ss part is not there, add it as 00:00:00
+        if(date.length() == 10) {
+            date = date + " 00:00:00";
+        }
         dayNum = convertToDouble(dayStr.replaceAll("\"", ""));
         depth = convertToDouble(depthStr.replaceAll("\"", ""));
         temp = convertToDouble(tempStr.replaceAll("\"", ""));

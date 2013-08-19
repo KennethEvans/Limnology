@@ -14,11 +14,16 @@ import limnology.LakeDataPoint.FormatType;
 
 public class LakeDataRunHandler
 {
-    public static final String troutLake2010Daily = "C:/Scratch/Limnology/Sorted-Trout Lake-2010-Daily.csv";
     public static final String troutLake2009Daily = "C:/Scratch/Limnology/Sorted-Trout Lake-2009-Daily.csv";
+    public static final String troutLake2010Daily = "C:/Scratch/Limnology/Sorted-Trout Lake-2010-Daily.csv";
+    public static final String troutLake2011Daily = "C:/Scratch/Limnology/Sorted-Trout Lake-2011-Daily.csv";
+    public static final String troutLake2012Daily = "C:/Scratch/Limnology/Sorted-Trout Lake-2012-Daily.csv";
     public static final String troutLake2009Hourly = "C:/Scratch/Limnology/Sorted-Trout Lake-2009-Hourly.csv";
     public static final String sparklingLake2009Daily = "C:/Scratch/Limnology/Sorted-Sparkling Lake Raft-2009-Daily.csv";
     public static final String sparklingLake2011Daily = "C:/Scratch/Limnology/Sorted-Sparkling Lake Raft-2011-Daily.csv";
+    public static final String crystalLake2010Daily = "C:/Scratch/Limnology/Sorted-Crystal Lake Bog-2010-Daily.csv";
+    public static final String crystalLake2011Daily = "C:/Scratch/Limnology/Sorted-Crystal Lake Bog-2011-Daily.csv";
+    public static final String crystalLake2012Daily = "C:/Scratch/Limnology/Sorted-Crystal Lake Bog-2012-Daily.csv";
 
     // /////////////////////////////////////////////////////////////////////////
     // Specific Methods
@@ -62,16 +67,6 @@ public class LakeDataRunHandler
     }
 
     /**
-     * Trout Lake 2010 Daily by DataSelect every 5 days.
-     */
-    public static void trout2010DailyBy5() {
-        String csvName = troutLake2010Daily;
-        String lakeName = "Trout Lake";
-        int year = 2010;
-        runAllDaily(csvName, lakeName, year, 5);
-    }
-
-    /**
      * Trout Lake 2009 Daynum every 5 days.
      */
     public static void trout2009DaynumBy5() {
@@ -88,6 +83,36 @@ public class LakeDataRunHandler
         String csvName = troutLake2009Daily;
         String lakeName = "Trout Lake";
         int year = 2009;
+        runAllDaily(csvName, lakeName, year, 5);
+    }
+
+    /**
+     * Trout Lake 2009 Daily by DataSelect every 5 days.
+     */
+    public static void trout2010DailyBy5() {
+        String csvName = troutLake2010Daily;
+        String lakeName = "Trout Lake";
+        int year = 2010;
+        runAllDaily(csvName, lakeName, year, 5);
+    }
+
+    /**
+     * Trout Lake 2009 Daily by DataSelect every 5 days.
+     */
+    public static void trout2011DailyBy5() {
+        String csvName = troutLake2011Daily;
+        String lakeName = "Trout Lake";
+        int year = 2011;
+        runAllDaily(csvName, lakeName, year, 5);
+    }
+
+    /**
+     * Trout Lake 2009 Daily by DataSelect every 5 days.
+     */
+    public static void trout2012DailyBy5() {
+        String csvName = troutLake2012Daily;
+        String lakeName = "Trout Lake";
+        int year = 2012;
         runAllDaily(csvName, lakeName, year, 5);
     }
 
@@ -158,13 +183,54 @@ public class LakeDataRunHandler
         runAllDayNum(csvName, lakeName, year, 5);
     }
 
+    /**
+     * Crystal Lake Bog 2012 Daynum every 5 days.
+     */
+    public static void crystalBog2012DaynumBy5() {
+        String csvName = crystalLake2012Daily;
+        String lakeName = "Crystal Lake Bog";
+        int year = 2012;
+        runAllDayNum(csvName, lakeName, year, 5);
+    }
+
+    /**
+     * Crystal Lake Bog 2010 Daily by DataSelect every 5 days.
+     */
+    public static void crystalBog2010DailyBy5() {
+        String csvName = crystalLake2010Daily;
+        String lakeName = "Crystal Lake Bog";
+        int year = 2010;
+        runAllDaily(csvName, lakeName, year, 5);
+    }
+
+    /**
+     * Crystal Lake Bog 2012 Daily by DataSelect every 5 days.
+     */
+    public static void crystalBog2011DailyBy5() {
+        String csvName = crystalLake2011Daily;
+        String lakeName = "Crystal Lake Bog";
+        int year = 2011;
+        runAllDaily(csvName, lakeName, year, 5);
+    }
+
+    /**
+     * Crystal Lake Bog 2012 Daily by DataSelect every 5 days.
+     */
+    public static void crystalBog2012DailyBy5() {
+        String csvName = crystalLake2012Daily;
+        String lakeName = "Crystal Lake Bog";
+        int year = 2012;
+        runAllDaily(csvName, lakeName, year, 5);
+    }
+
     // /////////////////////////////////////////////////////////////////////////
     // General Methods
     // /////////////////////////////////////////////////////////////////////////
 
     /**
      * /** Does all the available days in the given year, incrementing by the
-     * given increment from the first one found.
+     * given increment from the first one found. (e.g. 05-18, 05-23, 05-28,
+     * 06-04, 06-09, ...).
      * 
      * @param csvName
      * @param lakeName
@@ -186,7 +252,8 @@ public class LakeDataRunHandler
 
     /**
      * /** Does all the available days in the given year, incrementing by the
-     * given increment from the first one found.
+     * given increment from the first of the month (e.g. 05-15, 05-20, 05-30,
+     * 06-05, 06-10 ...).
      * 
      * @param csvName
      * @param lakeName
@@ -224,12 +291,19 @@ public class LakeDataRunHandler
         // trout2010FirstDaysJuly();
         // trout2010Daily();
         // trout2010DaynumBy5();
-        // trout2010DailyBy5();
-        // trout2009DaynumBy5();
         trout2009DailyBy5();
+        trout2010DailyBy5();
+        trout2011DailyBy5();
+        trout2012DailyBy5();
+        // trout2009DaynumBy5();
+        // trout2009DailyBy5();
         // trout2009Early();
         // trout2009Hourly();
         // sparkling2009Daynum();
-        sparkling2009DaynumBy5();
+        // sparkling2009DaynumBy5();
+        // crystalBog2012DaynumBy5();
+        crystalBog2010DailyBy5();
+        crystalBog2011DailyBy5();
+        crystalBog2012DailyBy5();
     }
 }
