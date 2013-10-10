@@ -114,7 +114,7 @@ public class LakeDataPoint implements Comparable<LakeDataPoint>
      * @param stringVal
      * @return
      */
-    private double convertToDouble(String stringVal) {
+    public static double convertToDouble(String stringVal) {
         double val = Double.NaN;
         try {
             val = Double.valueOf(stringVal);
@@ -130,7 +130,7 @@ public class LakeDataPoint implements Comparable<LakeDataPoint>
      * @param stringVal
      * @return
      */
-    private int convertToInt(String stringVal) {
+    public static int convertToInt(String stringVal) {
         int val = -1;
         try {
             val = Integer.valueOf(stringVal);

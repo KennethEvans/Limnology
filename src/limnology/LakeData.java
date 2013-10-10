@@ -141,6 +141,7 @@ public class LakeData
                 lineNum++;
                 tokens = line.split(delimiter);
                 tokensLen = tokens.length;
+                // The first lines is the columns
                 if(lineNum == 1) {
                     // Find the indices
                     hourStr = null;
@@ -725,8 +726,7 @@ public class LakeData
             dataset = this.createDatasetFromDayNums(list, days);
             break;
         case DAYSARRAY:
-            days = DAYS;
-            dataset = this.createDatasetFromDayNums(list, days);
+            dataset = this.createDatasetFromDayNums(list, this.days);
             break;
         }
         this.formatSeriesNames(dataset, formatType);

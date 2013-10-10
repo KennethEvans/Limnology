@@ -21,9 +21,10 @@ public class LakeDataRunHandler
     public static final String troutLake2009Hourly = "C:/Scratch/Limnology/Sorted-Trout Lake-2009-Hourly.csv";
     public static final String sparklingLake2009Daily = "C:/Scratch/Limnology/Sorted-Sparkling Lake Raft-2009-Daily.csv";
     public static final String sparklingLake2011Daily = "C:/Scratch/Limnology/Sorted-Sparkling Lake Raft-2011-Daily.csv";
-    public static final String crystalLake2010Daily = "C:/Scratch/Limnology/Sorted-Crystal Lake Bog-2010-Daily.csv";
-    public static final String crystalLake2011Daily = "C:/Scratch/Limnology/Sorted-Crystal Lake Bog-2011-Daily.csv";
-    public static final String crystalLake2012Daily = "C:/Scratch/Limnology/Sorted-Crystal Lake Bog-2012-Daily.csv";
+    public static final String crystalLakeBog2010Daily = "C:/Scratch/Limnology/Sorted-Crystal Lake Bog-2010-Daily.csv";
+    public static final String crystalLakeBog2011Daily = "C:/Scratch/Limnology/Sorted-Crystal Lake Bog-2011-Daily.csv";
+    public static final String crystalLakeBog2012Daily = "C:/Scratch/Limnology/Sorted-Crystal Lake Bog-2012-Daily.csv";
+    public static final String crystalLake2012Daily = "C:/Scratch/Limnology/crystal_lake_water_temperature_data(2012).csv";
 
     // /////////////////////////////////////////////////////////////////////////
     // Specific Methods
@@ -43,7 +44,6 @@ public class LakeDataRunHandler
         app.setLakeName(lakeName);
         app.setDays(days);
         app.run();
-
     }
 
     /**
@@ -187,7 +187,7 @@ public class LakeDataRunHandler
      * Crystal Lake Bog 2012 Daynum every 5 days.
      */
     public static void crystalBog2012DaynumBy5() {
-        String csvName = crystalLake2012Daily;
+        String csvName = crystalLakeBog2012Daily;
         String lakeName = "Crystal Lake Bog";
         int year = 2012;
         runAllDayNum(csvName, lakeName, year, 5);
@@ -197,7 +197,7 @@ public class LakeDataRunHandler
      * Crystal Lake Bog 2010 Daily by DataSelect every 5 days.
      */
     public static void crystalBog2010DailyBy5() {
-        String csvName = crystalLake2010Daily;
+        String csvName = crystalLakeBog2010Daily;
         String lakeName = "Crystal Lake Bog";
         int year = 2010;
         runAllDaily(csvName, lakeName, year, 5);
@@ -207,7 +207,7 @@ public class LakeDataRunHandler
      * Crystal Lake Bog 2012 Daily by DataSelect every 5 days.
      */
     public static void crystalBog2011DailyBy5() {
-        String csvName = crystalLake2011Daily;
+        String csvName = crystalLakeBog2011Daily;
         String lakeName = "Crystal Lake Bog";
         int year = 2011;
         runAllDaily(csvName, lakeName, year, 5);
@@ -217,10 +217,37 @@ public class LakeDataRunHandler
      * Crystal Lake Bog 2012 Daily by DataSelect every 5 days.
      */
     public static void crystalBog2012DailyBy5() {
-        String csvName = crystalLake2012Daily;
+        String csvName = crystalLakeBog2012Daily;
         String lakeName = "Crystal Lake Bog";
         int year = 2012;
         runAllDaily(csvName, lakeName, year, 5);
+    }
+
+    /**
+     * Crystal Lake 2012 Daily by DataSelect every 5 days.
+     */
+    public static void crystal2012DailyBy5() {
+        String csvName = crystalLake2012Daily;
+        String lakeName = "Crystal Lake";
+        int year = 2012;
+        runAllDaily(csvName, lakeName, year, 5);
+    }
+
+    /**
+     * Trout Lake 2010 first days in July.
+     */
+    public static void crystalSpecifiedDays() {
+        String csvName = crystalLake2012Daily;
+        String lakeName = "Crystal Lake";
+        String[] days = {"07-24", "07-26", "07-28", "07-30", "08-02", "08-04",
+            "08-06", "08-08", "08-10", "08-12", "08-14", "08-16", "08-18",
+            "08-20", "08-22", "0824", "08-26", "08-28"};
+        LakeData app = new LakeData();
+        app.setMethod(METHOD.DAYSARRAY);
+        app.setCsvName(csvName);
+        app.setLakeName(lakeName);
+        app.setDays(days);
+        app.run();
     }
 
     // /////////////////////////////////////////////////////////////////////////
@@ -291,10 +318,13 @@ public class LakeDataRunHandler
         // trout2010FirstDaysJuly();
         // trout2010Daily();
         // trout2010DaynumBy5();
-        trout2009DailyBy5();
-        trout2010DailyBy5();
-        trout2011DailyBy5();
-        trout2012DailyBy5();
+
+        // // These are good to use
+        // trout2009DailyBy5();
+         trout2010DailyBy5();
+        // trout2011DailyBy5();
+        // trout2012DailyBy5();
+
         // trout2009DaynumBy5();
         // trout2009DailyBy5();
         // trout2009Early();
@@ -302,8 +332,11 @@ public class LakeDataRunHandler
         // sparkling2009Daynum();
         // sparkling2009DaynumBy5();
         // crystalBog2012DaynumBy5();
-        crystalBog2010DailyBy5();
-        crystalBog2011DailyBy5();
-        crystalBog2012DailyBy5();
+        // crystalBog2010DailyBy5();
+        // crystalBog2011DailyBy5();
+        // crystalBog2012DailyBy5();
+
+        crystal2012DailyBy5();
+        crystalSpecifiedDays();
     }
 }
