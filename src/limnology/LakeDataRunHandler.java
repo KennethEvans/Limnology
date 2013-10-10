@@ -36,12 +36,14 @@ public class LakeDataRunHandler
     public static void trout2010FirstDaysJuly() {
         String csvName = troutLake2010Daily;
         String lakeName = "Trout Lake";
+        int year = 2012;
         String[] days = {"07-01", "07-02", "07-03", "07-04", "07-05", "07-06",
             "07-07", "07-08", "07-09", "07-10", "07-11", "07-12", "07-13"};
         LakeData app = new LakeData();
         app.setMethod(METHOD.DAYSARRAY);
         app.setCsvName(csvName);
         app.setLakeName(lakeName);
+        app.setYear(year);
         app.setDays(days);
         app.run();
     }
@@ -234,11 +236,12 @@ public class LakeDataRunHandler
     }
 
     /**
-     * Trout Lake 2010 first days in July.
+     * Crystal Lake specified days.
      */
     public static void crystalSpecifiedDays() {
         String csvName = crystalLake2012Daily;
         String lakeName = "Crystal Lake";
+        int year = 2012;
         String[] days = {"07-24", "07-26", "07-28", "07-30", "08-02", "08-04",
             "08-06", "08-08", "08-10", "08-12", "08-14", "08-16", "08-18",
             "08-20", "08-22", "0824", "08-26", "08-28"};
@@ -246,6 +249,7 @@ public class LakeDataRunHandler
         app.setMethod(METHOD.DAYSARRAY);
         app.setCsvName(csvName);
         app.setLakeName(lakeName);
+        app.setYear(year);
         app.setDays(days);
         app.run();
     }
@@ -321,7 +325,7 @@ public class LakeDataRunHandler
 
         // // These are good to use
         // trout2009DailyBy5();
-         trout2010DailyBy5();
+        trout2010DailyBy5();
         // trout2011DailyBy5();
         // trout2012DailyBy5();
 
