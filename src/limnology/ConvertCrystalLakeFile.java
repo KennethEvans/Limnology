@@ -24,9 +24,18 @@ public class ConvertCrystalLakeFile
     private static final double CELL_END = 18.5;
     private static final String DIRECTORY = "C:/Scratch/Limnology";
 
-    private static final File INPUT_FILE = new File(DIRECTORY, "CRsonde.csv");
+    // Original 2012 data files
+    // private static final File INPUT_FILE = new File(DIRECTORY,
+    // "CRsonde.csv");
+    // private static final File OUTPUT_FILE = new File(DIRECTORY,
+    // "crystal_lake_water_temperature_data(2012).csv");
+
+    // Data files from Colin Smith on 7-14-2014 for years 2011-2013
+    private static String year = "2013";
+    private static final File INPUT_FILE = new File(DIRECTORY, year
+        + "CrystalLake_SondeTable.csv");
     private static final File OUTPUT_FILE = new File(DIRECTORY,
-        "crystal_lake_water_temperature_data(2012).csv");
+        "crystal_lake_water_temperature_data(" + year + ").csv");
 
     private boolean run() {
         boolean abort = false;
@@ -123,6 +132,8 @@ public class ConvertCrystalLakeFile
             out.close();
             in = null;
             out = null;
+            System.out.println("Input: " + INPUT_FILE);
+            System.out.println("Output: " + OUTPUT_FILE);
             System.out.println("Lines read: " + lineNum);
             System.out.println("Skipped: " + nSkipped);
             System.out.println("Invalid depth or temperature: " + nInvalid);
